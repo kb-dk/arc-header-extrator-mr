@@ -33,6 +33,9 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-core</artifactId>
             <version>0.20.203.0</version>
+            <!-- when this project is run in IntelliJ IDEA the below line needs to be deactivated. Otherwise IDEA
+                 will not have the necessary Hadoop JARS on the class path.
+            -->
             <scope>provided</scope>
         </dependency>
 
@@ -40,6 +43,9 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.5.2</version>
+            <!-- when this project is run in IntelliJ IDEA the below line needs to be deactivated. Otherwise IDEA
+                 will not have the necessary Jackson JARS on the class path.
+            -->
             <scope>provided</scope>
         </dependency>
 
