@@ -9,10 +9,24 @@
 
     <name>dk.statsbiblioteket.hadoop.archeaderextractor</name>
     <url>http://maven.apache.org</url>
+    <inceptionYear>2013</inceptionYear>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <license.licenseName>apache_v2</license.licenseName>
+        <license.organizationName>State and University Library, Denmark</license.organizationName>
+        <license.projectName>ARC Header Extractor MR</license.projectName>
+        <license.outputDirectory>${project.basedir}</license.outputDirectory>
     </properties>
+
+    <licenses>
+        <license>
+            <name>apache_v2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
 
     <dependencies>
         <dependency>
