@@ -17,6 +17,9 @@
         <license.organizationName>State and University Library, Denmark</license.organizationName>
         <license.projectName>ARC Header Extractor MR</license.projectName>
         <license.outputDirectory>${project.basedir}</license.outputDirectory>
+        <versions.hadoop>0.20.203.0</versions.hadoop>
+        <versions.jackson>1.5.2</versions.jackson>
+        <versions.jwat>1.0.1-SNAPSHOT</versions.jwat>
     </properties>
 
     <licenses>
@@ -28,6 +31,73 @@
         </license>
     </licenses>
 
+    <profiles>
+        <profile>
+            <!-- This profile makes it easy to develop and run the M/R job from within IntelliJ IDEA. -->
+            <!-- This profile is identical to the default profile except it does not declare the Hadoop and Jackson
+                 dependencies as "provided" as IDEA need these at runtime.
+            -->
+            <id>IDEA</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-core</artifactId>
+                    <version>${versions.hadoop}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                    <version>${versions.jackson}</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.jwat</groupId>
+                    <artifactId>jwat-common</artifactId>
+                    <version>${versions.jwat}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jwat</groupId>
+                    <artifactId>jwat-arc</artifactId>
+                    <version>${versions.jwat}</version>
+                </dependency>
+            </dependencies>
+
+        </profile>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-core</artifactId>
+                    <version>${versions.hadoop}</version>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.codehaus.jackson</groupId>
+                    <artifactId>jackson-mapper-asl</artifactId>
+                    <version>${versions.jackson}</version>
+                    <scope>provided</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.jwat</groupId>
+                    <artifactId>jwat-common</artifactId>
+                    <version>${versions.jwat}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jwat</groupId>
+                    <artifactId>jwat-arc</artifactId>
+                    <version>${versions.jwat}</version>
+                </dependency>
+            </dependencies>
+
+        </profile>
+    </profiles>
     <dependencies>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
@@ -78,8 +148,10 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
-                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <id>make-assembly</id>
+                        <!-- this is used for inheritance merges -->
+                        <phase>package</phase>
+                        <!-- bind to the packaging phase -->
                         <goals>
                             <goal>single</goal>
                         </goals>
