@@ -2,5 +2,5 @@
 *.iml
 target/
 .DS_Store
-out
+output
 
